@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Installing dependencies...
+      - npm ci
+  build:
+    commands:
+      - echo Building Next.js app...
+      - npm run build
+      - npm run export
+  post_build:
+    commands:
+      - echo Build completed. Preparing artifact...
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: out
