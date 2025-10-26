@@ -1,27 +1,14 @@
-export const users = [
-    {
-        id: 1, name: "amir"
-    },
-    {
-        id: 2, name: "Raza"
-    },
-]
+// src/app/user/route.ts
+import { NextRequest } from 'next/server';
 
-
-export async function GET() {
-    return Response.json(users);
+export async function GET(req: NextRequest) {
+    return new Response(JSON.stringify({ message: 'ok' }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+    });
 }
-export async function POST(request: Request) {
-    const user = await request.json()
-    const newUser = {
-        id: users.length + 1,
-        name: user.name,
-    }
-    users.push(newUser)
-    return new Response(JSON.stringify(newUser), {
-        headers: {
-            "Content-Type": "application/json"
-        },
-        status: 201,
-    })
+
+export async function POST(req: NextRequest) {
+    const data = await req.json();
+    return new Response(JSON.stringify({ received: data }), { status: 201 });
 }
