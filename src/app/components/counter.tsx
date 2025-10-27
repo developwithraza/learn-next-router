@@ -7,7 +7,7 @@ function Counter() {
     console.log("counter", count)
     return (
         <div>
-            <p onClick={() => setCount(count + 1)}>counter {count} click</p>
+            <p onClick={() => setCount(count + 1)}>counter number {count} click</p>
         </div>
     )
 }
